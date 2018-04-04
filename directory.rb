@@ -7,8 +7,12 @@ def input_students
 
     while !name.empty? do
       students << {name: name, cohort: :november}
-      puts "Now we have #{students.count} students"
-      name = gets.chomp
+      if students.count > 1
+          puts "Now we have #{students.count} students"
+      else
+          puts "Now we have #{students.count} student"
+      end
+          name = gets.chomp
     end
 
 students
@@ -26,7 +30,11 @@ def print(students)
 end
 
 def print_footer(students)
-    puts "Overall, we have #{students.count} great students".center(40)
+    if students.count > 1
+        puts "Overall, we have #{students.count} great students".center(40)
+    else
+        puts "Overall, we have #{students.count} great student".center(40)
+    end
 end
 
 students = input_students
