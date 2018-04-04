@@ -21,9 +21,9 @@ end
 
 def print(students)
     students.each do |student|
-      if student[:name].start_with?("D")
-        puts "#{student[:name]} (#{student[:cohort]} cohort)"
-      end
+        if student[:name].delete(' ').length < 12
+            puts student[:name]
+        end
     end
 end
 
