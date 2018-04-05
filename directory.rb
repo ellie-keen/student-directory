@@ -3,7 +3,7 @@ def input_students
     puts "To finish, just hit return twice"
 
     students = []
-    name = gets.chomp
+    name = gets.strip
 
     while !name.empty? do
       students << {name: name, cohort: :november}
@@ -12,7 +12,7 @@ def input_students
       else
           puts "Now we have #{students.count} student"
       end
-          name = gets.chomp
+          name = gets.strip
     end
 
 students
@@ -24,12 +24,16 @@ def print_header
 end
 
 def print(students)
+
     students.each do |student|
     puts "#{student[:name]} (#{student[:cohort]} cohort)".center(40)
     end
 end
 
 def print_footer(students)
+
+    puts "------------------".center(40)
+
     if students.count > 1
         puts "Overall, we have #{students.count} great students".center(40)
     else
@@ -40,5 +44,7 @@ end
 students = input_students
 
 print_header
-print(students)
-print_footer(students)
+if students.count >= 1
+  print(students)
+  print_footer(students)
+end
