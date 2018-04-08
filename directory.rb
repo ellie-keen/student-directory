@@ -20,7 +20,7 @@ def process(selection)
     when "1"
         input_students
     when "2"
-        show_students(load_students)
+        show_students
     when "3"
         save_students
     when "4"
@@ -53,7 +53,7 @@ def add_student(name, cohort=:november)
     @students << {name: name, cohort: cohort.to_sym}
 end
 
-def show_students(students)
+def show_students
     print_header
     print_student_list
     print_footer
@@ -89,7 +89,7 @@ def save_students
     file.close
 end
 
-def load_students(filename = "students.csv")
+def load_students
     file = File.open("students.csv", "r")
     file.readlines.each do |line|
         name, cohort = line.chomp.split(',')
@@ -99,10 +99,10 @@ def load_students(filename = "students.csv")
 end
 
 def try_load_students
-    filename = ARGV.first
+    filename = "students.csv"
     return if filename.nil?
     if File.exists?(filename)
-        load_students(filename)
+        load_students
         puts "Loaded #{@students.count} from #{filename}"
     else
         puts "Sorry, #{filename} doesn't exist."
