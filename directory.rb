@@ -82,6 +82,7 @@ def save_file
         csv_line = student_data.join(",")
         file.puts csv_line
     end
+    puts "You have succesfully saved your file."
     file.close
 end
 
@@ -91,6 +92,7 @@ def load_file
         name, cohort = line.chomp.split(',')
         add_student(name, cohort)
     end
+    puts "You have succesfully loaded your file."
     file.close
 end
 
